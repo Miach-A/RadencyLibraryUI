@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookListStateService } from 'src/app/services/book-list-state.service';
 
 @Component({
   selector: 'app-book-list-item',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookListItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(  ) { }
 
   ngOnInit(): void {
   }

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material.module';
 import { BookModule } from './components/book.module';
+import { BACKEND_API_URL } from './app-injection-tokens';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +18,9 @@ import { BookModule } from './components/book.module';
     AngularMaterialModule,
     BookModule,
   ],
-  providers: [],
+  providers: [
+    {provide:BACKEND_API_URL,useValue:environment.backendApi},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

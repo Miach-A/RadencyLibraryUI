@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
+import { EditBookAction } from '../common/enums/EditBookAction';
 
-enum Action{
-  Add = "Add",
-  Edit = "Edit"
-}
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +10,11 @@ enum Action{
 export class EditBookStateService {
 
   public title:string;
-  public action:Action;
+  public action:EditBookAction;
 
   constructor() {
     this.title = "Add Book";
-    this.action = Action.Add;
+    this.action = EditBookAction.Add;
   }
 }
 
