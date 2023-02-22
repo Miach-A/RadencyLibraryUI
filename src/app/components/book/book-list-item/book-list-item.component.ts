@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { BookDto } from 'src/app/common/cqrs/books/dto/BookDto';
 import { BookListStateService } from 'src/app/services/book-list-state.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { BookListStateService } from 'src/app/services/book-list-state.service';
 export class BookListItemComponent implements OnInit {
 
   constructor(  ) { }
+
+  @Input() book?:BookDto
 
   ngOnInit(): void {
   }

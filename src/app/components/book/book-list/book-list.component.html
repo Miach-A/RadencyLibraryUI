@@ -1,5 +1,9 @@
 <div class="book-list">
   <!-- {{bookListStateService.bookListDataType}} -->
+  <div *ngFor="let book of GetBooks() | async">
+    
+  </div>
+
   <app-book-list-item></app-book-list-item>
   <app-book-list-item></app-book-list-item>
   <app-book-list-item></app-book-list-item>

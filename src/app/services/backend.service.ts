@@ -12,12 +12,14 @@ export class BackendService {
   constructor(public httpClient: HttpClient,
     @Inject(BACKEND_API_URL) private uriBase: string) { }
 
-  public get(uri: string, guid?: string, query?: { [key: string]: string|number|boolean }): Observable<Object> {
+  public get(uri: string, guid?: string, query?:any): Observable<Object> {  //: { [key: string]: string|number|boolean }
     var params = new HttpParams();
-    if (query !== null) {
-      for (const key in query) {
+
+    if (query !== undefined){
+      let queryKeys = Object.keys(query);
+      queryKeys.forEach((key) => {
         params = params.append(key, query[key]);
-      }
+      });
     }
 
     if (guid != undefined && guid != "" && guid != null) {
@@ -42,14 +44,8 @@ export class BackendService {
     return this.httpClient.put(this.uriBase.concat(uri).concat(guidstr), entity);
   }
 
-  public delete(uri: string, guid?: string, search?: { [key: string]: string }) {
+  public delete(uri: string, guid?: string) {
     var params = new HttpParams();
-    if (search !== null) {
-      for (const key in search) {
-        params = params.append(key, search[key]);
-      }
-    }
-
     if (guid != undefined && guid != "" && guid != null) {
       return this.httpClient.delete(this.uriBase.concat(uri).concat("/" + guid), { params: params });
     }

@@ -8,6 +8,7 @@ import { AngularMaterialModule } from './modules/angular-material.module';
 import { BookModule } from './components/book.module';
 import { BACKEND_API_URL } from './app-injection-tokens';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule,
     AngularMaterialModule,
     BookModule,
+    HttpClientModule
   ],
   providers: [
     {provide:BACKEND_API_URL,useValue:environment.backendApi},
