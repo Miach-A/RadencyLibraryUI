@@ -5,12 +5,50 @@
   <mat-divider></mat-divider>
   <div class="content">
     <div class="content-column">
-    <div><mat-label>1</mat-label></div>
-    <div><mat-label>1</mat-label></div>
-    <div><mat-label>1</mat-label></div>
+      <div class="form-field">
+        <mat-label>Title</mat-label>
+        <span class="spacer"></span>
+        <div class="form-field-input">
+          <input matInput />
+        </div>
+
+      </div>
+      <div class="form-field">
+        <mat-label>Cover</mat-label>
+        <span class="spacer"></span>
+        <div class="form-field-input">
+          <input matInput />
+          <input style="flex: 0 1 20%;" type="button" value="Choose...">
+        </div>
+
+      </div>
+      <div class="form-field">
+        <mat-label>Genre</mat-label>
+        <span class="spacer"></span>
+        <div class="form-field-input">
+          <input matInput />
+        </div>
+      </div>
+      <div class="form-field">
+        <mat-label>Author</mat-label>
+        <span class="spacer"></span>
+        <div class="form-field-input">
+          <input matInput />
+        </div>
+      </div>
     </div>
 
-
-    <div class="content-column"></div>
+    <div class="content-column">
+      <div class="form-field-textarea">
+        <mat-label>Content</mat-label>
+        <span class="spacer"></span>
+        <textarea matInput> </textarea>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button mat-raised-button color="primary">{{editBookStateService.action}}</button>
+    <span style="width: 1vw;"></span>
+    <button mat-raised-button color="accent">Clear</button>
   </div>
 </div>
