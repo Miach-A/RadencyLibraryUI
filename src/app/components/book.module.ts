@@ -5,6 +5,7 @@ import { BookListComponent } from './book/book-list/book-list.component';
 import { BookListItemComponent } from './book/book-list-item/book-list-item.component';
 import { EditBookComponent } from './book/edit-book/edit-book.component';
 import { ViewBookComponent } from './book/view-book/view-book.component';
+import { AngularMaterialModule } from '../modules/angular-material.module';
 
 
 
@@ -17,7 +18,8 @@ import { ViewBookComponent } from './book/view-book/view-book.component';
     ViewBookComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AngularMaterialModule
   ]
 })
 export class BookModule { }

@@ -1,16 +1,28 @@
 .flex-column-conteiner {
+  //padding: 0 2vh 0 2vh;
+  margin: 0 2vh 0 2vh;;
   display: flex;
   height: 100%;
   flex-direction: column;
+  flex-wrap:wrap;
+}
+
+.title{
+  flex: 0 0 10%;
+  display: flex;
+  align-items:center;
 }
 
 .flex-top {
   flex: 0 0 40%;
-  background-color: antiquewhite;
+  margin-right: 2vh;
 }
 
 .flex-bottom {
-  flex: 0 0 60%;
-  background-color: aquamarine;
+  flex: 0 0 50%;
 }
 
+h1{
+  margin: 0;
+  font-size: 2rem;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditBookStateService } from 'src/app/services/edit-book-state.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditBookComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public editBookStateService : EditBookStateService
+  ) { }
 
   ngOnInit(): void {
   }
