@@ -22,6 +22,7 @@
   display: flex;
   flex: 0 0 80%;
   padding: 3vh 1vw 1vh 1vw;
+  flex-wrap:wrap;
 }
 
 .actions{
@@ -31,7 +32,7 @@
   padding: 0 1vh 0 1vh;
   justify-content: center;
   button{
-    width: 8vw;
+    width: max(8vw, 90px) ;
   }
 }
 
@@ -39,10 +40,11 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  margin: 0 1vw 0 1vw;
 }
 
 .form-field-input{
-  width: 70%;
+  width: 80%;
   display: flex;
 }
 .form-field-input > *{
@@ -62,7 +64,7 @@
   width: 100%;
   textarea{
     resize: none;
-    width: 70%;
+    width: 80%;
     border-radius: 5px;
     padding: 5px;
     font-family: Roboto, "Helvetica Neue", sans-serif;

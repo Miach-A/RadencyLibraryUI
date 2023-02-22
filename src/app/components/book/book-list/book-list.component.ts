@@ -19,7 +19,10 @@ export class BookListComponent implements OnInit {
     private backendService:BackendService
   ) { }
 
+  public books$:Observable<BookDto[]> = new Observable;
+
   ngOnInit(): void {
+    this.books$ =  this.GetBooks();
   }
 
   GetBooks():Observable<BookDto[]>{

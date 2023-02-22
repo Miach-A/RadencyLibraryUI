@@ -1,15 +1,8 @@
 <div class="book-list">
   <!-- {{bookListStateService.bookListDataType}} -->
-  <div *ngFor="let book of GetBooks() | async">
-    
-  </div>
+  <app-book-list-item *ngFor="let book of (books$ | async)" [book]="book">
 
-  <app-book-list-item></app-book-list-item>
-  <app-book-list-item></app-book-list-item>
-  <app-book-list-item></app-book-list-item>
-  <app-book-list-item></app-book-list-item>
-  <app-book-list-item></app-book-list-item>
-  <app-book-list-item></app-book-list-item>
-  <app-book-list-item></app-book-list-item>
+  </app-book-list-item>
+
 </div>
 
