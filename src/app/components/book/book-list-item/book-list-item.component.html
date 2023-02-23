@@ -2,10 +2,13 @@
 
   <div class = "book-icon">ICON</div>
   <div class = "book-info">
-    <div class="book-info-tittle">{{book?.title}}</div>
+    <div class="book-info-tittle"> <h2> {{book?.title}} </h2></div>
     <div class="book-info-footer">
-      Raview: {{book?.reviewsNumber}} Rating: {{book?.rating}}
+      Raview: {{book?.reviewsNumber}} <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>   Rating: {{book?.rating}}
     </div>
   </div>
+
+  <button class = "view-buttn" mat-icon-button aria-label="View">	<mat-icon>visibility</mat-icon></button>
+  <button class = "edit-buttn" mat-icon-button aria-label="Edit">	<mat-icon>edit</mat-icon></button>
 
 </div>

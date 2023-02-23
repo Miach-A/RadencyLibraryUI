@@ -5,18 +5,23 @@ import { BookListStateService } from 'src/app/services/book-list-state.service';
 @Component({
   selector: 'app-book-list-item',
   templateUrl: './book-list-item.component.html',
-  styleUrls: ['./book-list-item.component.scss']
+  styleUrls: ['./book-list-item.component.scss'],
 })
 export class BookListItemComponent implements OnInit {
+  constructor() {}
 
-  constructor(  ) { }
-
-  @Input() book?:BookDto
+  @Input() book?: BookDto;
 
   ngOnInit(): void {
-    if (this.book != null){
-      this.book.rating  = Math.round(this.book.rating * 100) / 100;
+    if (this.book != null) {
+      this.book.rating = Math.round(this.book.rating * 100) / 100;
     }
   }
 
+  ShortTitle(): string {
+    if (this.book != null) {
+      return this.book.title.substring(0, 42);
+    }
+    return '';
+  }
 }
