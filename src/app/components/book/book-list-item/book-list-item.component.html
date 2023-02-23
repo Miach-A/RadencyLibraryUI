@@ -1,1 +1,11 @@
-<div>{{book | json}}</div>
+<div class = "book-card">
+
+  <div class = "book-icon">ICON</div>
+  <div class = "book-info">
+    <div class="book-info-tittle">{{book?.title}}</div>
+    <div class="book-info-footer">
+      Raview: {{book?.reviewsNumber}} Rating: {{book?.rating}}
+    </div>
+  </div>
+
+</div>

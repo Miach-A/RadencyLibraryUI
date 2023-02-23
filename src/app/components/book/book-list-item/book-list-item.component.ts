@@ -14,6 +14,9 @@ export class BookListItemComponent implements OnInit {
   @Input() book?:BookDto
 
   ngOnInit(): void {
+    if (this.book != null){
+      this.book.rating  = Math.round(this.book.rating * 100) / 100;
+    }
   }
 
 }

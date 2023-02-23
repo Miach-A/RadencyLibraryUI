@@ -1,0 +1,32 @@
+.book-card{
+  border-style: solid;
+  border-radius: 0.5vmax;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px;
+  margin: 1vh 1vw 1vh 1vw;
+  padding: 1vh 1vw 1vh 1vw;
+  height: 50px;
+  min-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.book-icon{
+  flex: 0 0 30%;
+}
+
+.book-info{
+  flex: 0 0 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-info-tittle{
+  flex: 0 0 70%;
+}
+
+.book-info-footer{
+  flex: 0 0 70%;
+  display: flex;
+}
