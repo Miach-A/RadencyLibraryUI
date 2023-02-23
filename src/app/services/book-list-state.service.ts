@@ -18,7 +18,7 @@ export class BookListStateService {
     return this._bookListDataTypeEvent;
   }
   private EmitBookListDataTypeEvent() {
-    this._bookListDataTypeEvent.emit(); //this._bookListDataType
+    this._bookListDataTypeEvent.emit();
   }
 
   public set BookListDataType(dataType: BookListDataType) {

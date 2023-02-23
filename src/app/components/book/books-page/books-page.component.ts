@@ -17,6 +17,5 @@ export class BooksPageComponent implements OnInit {
 
   public SetBookListDataType(event: BookListDataType) {
     this.bookListStateService.BookListDataType = event;
-
   }
 }

@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BookDto } from '../common/cqrs/books/dto/BookDto';
 import { EditBookAction } from '../common/enums/EditBookAction';
-
-
+import { SaveResult } from '../common/models/SaveResult';
+import { BackendService } from './backend.service';
 
 
 @Injectable({
@@ -9,12 +11,38 @@ import { EditBookAction } from '../common/enums/EditBookAction';
 })
 export class EditBookStateService {
 
-  public title:string;
-  public action:EditBookAction;
+  private _changeBookEmitter: EventEmitter<BookDto> =
+  new EventEmitter();
 
-  constructor() {
-    this.title = "Add Book";
+  public action:EditBookAction;
+  public book?:BookDto;
+
+  constructor(
+    private backendService:BackendService,
+  ) {
     this.action = EditBookAction.Add;
   }
+
+  public ClearState(){
+    this.action = EditBookAction.Add;
+    this.book = undefined;
+  }
+
+  public GetChangeBookEmitter() {
+    return this._changeBookEmitter;
+  }
+
+  private EmitChangeBook() {
+    this._changeBookEmitter.emit(this.book);
+  }
+
+  public SaveBook(book:BookDto):Observable<SaveResult>{
+    if(this.book !== undefined){
+       book.id = this.book.id;
+    }
+
+    return this.backendService.put('books/save',book);
+  }
+
 }
 

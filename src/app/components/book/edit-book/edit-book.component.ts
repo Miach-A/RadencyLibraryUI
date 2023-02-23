@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { BookDto } from 'src/app/common/cqrs/books/dto/BookDto';
+import { EditBookAction } from 'src/app/common/enums/EditBookAction';
 import { BackendService } from 'src/app/services/backend.service';
 import { EditBookStateService } from 'src/app/services/edit-book-state.service';
 
@@ -12,26 +14,48 @@ import { EditBookStateService } from 'src/app/services/edit-book-state.service';
 export class EditBookComponent implements OnInit {
 
   public editForm!:FormGroup;
-  private _subscription:Subscription = new Subscription();
+  private _subscriptions:Subscription[] = [];
 
   constructor(
-    public editBookStateService : EditBookStateService,
-    private backendService:BackendService
+    public editBookStateService : EditBookStateService
   ) { }
 
   ngOnInit(): void {
     this.editForm = new FormGroup({
       title: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(128)]),
-      Cover: new FormControl('',[Validators.required]),
-      Genre: new FormControl('',[Validators.required]),
-      Author: new FormControl('',[Validators.required]),
-      Content: new FormControl('',[Validators.required])
+      cover: new FormControl('',[Validators.required]),
+      genre: new FormControl('',[Validators.required]),
+      author: new FormControl('',[Validators.required]),
+      content: new FormControl('',[Validators.required])
+    });
+
+    this._subscriptions.push(
+      this.editBookStateService.GetChangeBookEmitter().subscribe({
+        next: (book:BookDto) => this.editForm.setValue(book)
+      })
+    );
+
+  }
+
+  public ClearEditBookState(){
+    this.editBookStateService.ClearState();
+    this.editForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
     });
   }
 
   public Submit(){
-    this._subscription.unsubscribe();
-    this._subscription = this.backendService.put('user',this.editForm.value).subscribe();
+    this.editBookStateService.SaveBook(this.editForm.value).subscribe({
+      next: (result) => console.log(result),
+      error: (error) => console.log(error)
+    });
+ //   this._subscription.unsubscribe();
+/*     if(this)
+    this._subscription = this.backendService.put('user',this.editForm.value).subscribe(); */
   }
 
 }

@@ -1,6 +1,7 @@
 <div class="form-wrapper">
+  <form [formGroup] = "editForm" (ngSubmit)="Submit()">
   <div class="title">
-    <h3>{{ editBookStateService.action }}</h3>
+    <h3>{{ editBookStateService.action }} <span>&nbsp;</span> Book</h3>
   </div>
   <mat-divider></mat-divider>
   <div class="content">
@@ -9,7 +10,7 @@
         <mat-label>Title</mat-label>
         <span class="spacer"></span>
         <div class="form-field-input">
-          <input matInput />
+          <input matInput formControlName="title"/>
         </div>
 
       </div>
@@ -17,7 +18,7 @@
         <mat-label>Cover</mat-label>
         <span class="spacer"></span>
         <div class="form-field-input">
-          <input matInput />
+          <input matInput formControlName="cover"/>
           <input style="flex: 0 1 20%;" type="button" value="Choose...">
         </div>
 
@@ -26,14 +27,14 @@
         <mat-label>Genre</mat-label>
         <span class="spacer"></span>
         <div class="form-field-input">
-          <input matInput />
+          <input matInput formControlName="genre"/>
         </div>
       </div>
       <div class="form-field">
         <mat-label>Author</mat-label>
         <span class="spacer"></span>
         <div class="form-field-input">
-          <input matInput />
+          <input matInput formControlName="author"/>
         </div>
       </div>
     </div>
@@ -42,13 +43,14 @@
       <div class="form-field-textarea">
         <mat-label>Content</mat-label>
         <span class="spacer"></span>
-        <textarea matInput> </textarea>
+        <textarea matInput formControlName="content"> </textarea>
       </div>
     </div>
   </div>
   <div class="actions">
-    <button mat-raised-button color="primary">{{editBookStateService.action}}</button>
+    <button mat-raised-button color="primary" (click)="Submit()">{{editBookStateService.action}}</button>
     <span style="width: 1vw;"></span>
-    <button mat-raised-button color="accent">Clear</button>
+    <button mat-raised-button color="accent" (click)="ClearEditBookState()">Clear</button>
   </div>
+</form>
 </div>
