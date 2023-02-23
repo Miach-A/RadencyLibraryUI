@@ -27,33 +27,16 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.books$ = this.GetBooks();
+    this.books$ = this.bookListStateService.GetBooks();
     this._subscriptions.push(
-      this.bookListStateService.GetBookListDataTypeEmitter().subscribe({
+      this.bookListStateService.GetRefreshBookListEmitter().subscribe({
         next: () => {
-          this.books$ = this.GetBooks();
+          this.books$ = this.bookListStateService.GetBooks();
           this.changeDetector.markForCheck();
         },
       })
     );
 
-  }
-
-  GetBooks(): Observable<BookDto[]> {
-    var query: GetAllBookQuery | GetRecommendedBookQuery;
-    var uriPath: string = 'books';
-    if ((this.bookListStateService.BookListDataType == BookListDataType.All)) {
-      query = {
-        order: null,
-      };
-    } else {
-      uriPath = 'recommended';
-      query = {
-        genre: null,
-      };
-    }
-    return (this.backendService.get(uriPath, undefined, query) as Observable<BookDto[]>)
-      ;
   }
 
   ngOnDestroy(): void {

@@ -49,13 +49,7 @@ export class EditBookComponent implements OnInit {
   }
 
   public Submit(){
-    this.editBookStateService.SaveBook(this.editForm.value).subscribe({
-      next: (result) => console.log(result),
-      error: (error) => console.log(error)
-    });
- //   this._subscription.unsubscribe();
-/*     if(this)
-    this._subscription = this.backendService.put('user',this.editForm.value).subscribe(); */
+    this.editBookStateService.SaveBook(this.editForm.value);
   }
 
 }
