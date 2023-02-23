@@ -12,8 +12,8 @@ import { BookListStateService } from './book-list-state.service';
 })
 export class EditBookStateService {
 
-  private _changeBookEmitter: EventEmitter<BookDto> =
-  new EventEmitter();
+  private _changeBookEmitter: EventEmitter<BookDto|undefined> =
+  new EventEmitter(); //<BookDto|undefined>
   private _saveBookSubscription:Subscription = new Subscription();
 
   public action:EditBookAction;
@@ -29,6 +29,7 @@ export class EditBookStateService {
   public ClearState(){
     this.action = EditBookAction.Add;
     this.book = undefined;
+    this.EmitChangeBook();
   }
 
   public EditBook(book:BookDto){
@@ -42,15 +43,22 @@ export class EditBookStateService {
   }
 
   private EmitChangeBook() {
-    this._changeBookEmitter.emit(this.book);
+    if (this.book == undefined)
+    {
+      this._changeBookEmitter.emit();
+    }
+    else
+    {
+      this._changeBookEmitter.emit(this.book);
+    }
   }
 
   public SaveBook(book:BookDto){
     if(this.book !== undefined){
        book.id = this.book.id;
     }
-
-    this._saveBookSubscription = (this.backendService.put('books/save',book) as Observable<SaveResult>)
+    console.log(book);
+    this._saveBookSubscription = (this.backendService.post('books/save',book) as Observable<SaveResult>)
     .pipe(take(1)) //auto unsubscribe afret emit 1 result?
     .subscribe({
       next: (result) => {
