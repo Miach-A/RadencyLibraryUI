@@ -13,13 +13,17 @@
   align-items:center;
 }
 
-.flex-top {
+.flex-editbook {
   flex: 0 0 40%;
   margin-right: 2vh;
 }
 
-.flex-bottom {
-  flex: 0 0 50%;
+.flex-mat-tab {
+  flex: 0 0 auto;
+}
+
+.flex-book-list {
+  flex: 0 1 auto;
 }
 
 h1{

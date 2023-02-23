@@ -2,16 +2,17 @@
   <div class="title">
     <h1>Library</h1>
   </div>
-  <div class="flex-top">
+  <div class="flex-editbook">
     <app-edit-book></app-edit-book>
   </div>
 
-  <div class="flex-bottom">
+  <div class="flex-mat-tab">
     <mat-tab-group [color] = "'primary'" (selectedIndexChange) = "SetBookListDataType($event)">
       <mat-tab label="All"> </mat-tab>
       <mat-tab label="Recommended"> </mat-tab>
     </mat-tab-group>
-
+  </div>
+  <div class="flex-book-list">
     <app-book-list></app-book-list>
 
   </div>

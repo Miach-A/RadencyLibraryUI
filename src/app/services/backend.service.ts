@@ -18,12 +18,6 @@ export class BackendService {
 
     if (query !== undefined) {
       let queryKeys = Object.keys(query);
-      /*       queryKeys.forEach((key) => {
-        if(query[key] == null){
-          continue;
-        }
-        params = params.append(key, query[key]);
-      }); */
       for (const key of queryKeys) {
         if (query[key] == null) {
           continue;
