@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BookDto } from 'src/app/common/cqrs/books/dto/BookDto';
 import { BookListStateService } from 'src/app/services/book-list-state.service';
 import { EditBookStateService } from 'src/app/services/edit-book-state.service';
