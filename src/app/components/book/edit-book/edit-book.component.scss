@@ -32,6 +32,8 @@
   padding: 0 1vh 0 1vh;
   justify-content: center;
   button{
+    height: 30px;
+    line-height: 20px;
     width: max(8vw, 90px) ;
   }
 }
@@ -44,9 +46,9 @@
 }
 
 .form-field-input{
-  //width: 80%;
   flex: 1 1 auto;
   display: flex;
+  justify-content: flex-end;
 }
 .form-field-input > *{
   flex: 1 1 auto;
@@ -65,6 +67,9 @@
   margin: 1vh;
   height: 100%;
   width: 100%;
+  mat-label{
+    flex: 0 0 auto;
+  }
   textarea{
     resize: none;
     width: 80%;
@@ -80,13 +85,14 @@
   font-size: 18px;
   margin: 1vh;
   width: 100%;
-
+  align-items: center;
+  mat-label{
+    flex: 0 0 auto;
+  }
   input {
     border: 1px;
-
     border-style: solid;
     border-radius: 5px;
-    /* padding: 5px; */
   }
 
 }
@@ -98,4 +104,23 @@
 h3 {
   margin: 0;
   font-size: 1.3rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload{
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  input{
+    padding: 5px;
+    flex: 1 1 auto;
+  }
+  button{
+    height: 27px;
+    flex: 0 1 auto;
+    line-height: 20px;
+  }
 }

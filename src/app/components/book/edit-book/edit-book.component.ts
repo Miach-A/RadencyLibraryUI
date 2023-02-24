@@ -14,6 +14,8 @@ import { EditBookStateService } from 'src/app/services/edit-book-state.service';
 })
 export class EditBookComponent implements OnInit {
   public editForm!: FormGroup;
+  public fileName:string = "";
+  public base64img:string = "";
   private _subscriptions: Subscription[] = [];
 
   constructor(public editBookStateService: EditBookStateService) {}
@@ -47,6 +49,27 @@ export class EditBookComponent implements OnInit {
   public ClearEditBookState() {
     this.editBookStateService.ClearState();
     this.editForm.reset();
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      console.log(file);
+      this.fileName = file.name;
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result != undefined){
+          this.base64img = reader.result.toString();
+        }
+        else
+        {
+          this.base64img = "";
+        }
+      };
+    }
   }
 
   ngOnDestroy(): void {

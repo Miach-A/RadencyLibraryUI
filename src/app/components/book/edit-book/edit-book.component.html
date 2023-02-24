@@ -1,56 +1,79 @@
 <div class="form-wrapper">
-  <form [formGroup] = "editForm" (ngSubmit)="Submit()">
-  <div class="title">
-    <h3>{{ editBookStateService.action }} <span>&nbsp;</span> Book</h3>
-  </div>
-  <mat-divider></mat-divider>
-  <div class="content">
-    <div class="content-column">
-      <div class="form-field">
-        <mat-label>Title</mat-label>
-        <span class="spacer"></span>
-        <div class="form-field-input">
-          <input matInput formControlName="title"/>
+  <form [formGroup]="editForm" (ngSubmit)="Submit()">
+    <div class="title">
+      <h3>{{ editBookStateService.action }} <span>&nbsp;</span> Book</h3>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="content">
+      <div class="content-column">
+        <div class="form-field">
+          <mat-label>Title</mat-label>
+          <span class="spacer"></span>
+          <div class="form-field-input">
+            <input matInput formControlName="title" />
+          </div>
+        </div>
+        <div class="form-field">
+          <mat-label>Cover</mat-label>
+          <span class="spacer"></span>
+          <div class="form-field-input">
+            <!--         <input  matInput formControlName="cover"/>
+          <input type="file" style="flex: 0 1 20%;" type="button" value="Choose..."> -->
+            <input
+              type="file"
+              class="file-input"
+              (change)="onFileSelected($event)"
+              #fileUpload
+            />
+
+            <div class="file-upload">
+              <input readonly="true" matInput  value= "{{ fileName || 'No file uploaded yet.' }}"/>
+              <input hidden formControlName="cover" value="{{base64img}}">
+              <button
+                type="button"
+                mat-flat-button
+                color="primary"
+                class="upload-btn"
+                (click)="fileUpload.click()"
+              >
+                Choose...
+              </button>
+            </div>
+          </div>
         </div>
 
-      </div>
-      <div class="form-field">
-        <mat-label>Cover</mat-label>
-        <span class="spacer"></span>
-        <div class="form-field-input">
-          <input matInput formControlName="cover"/>
-          <input style="flex: 0 1 20%;" type="button" value="Choose...">
+        <div class="form-field">
+          <mat-label>Genre</mat-label>
+          <span class="spacer"></span>
+          <div class="form-field-input">
+            <input matInput formControlName="genre" />
+          </div>
         </div>
+        <div class="form-field">
+          <mat-label>Author</mat-label>
+          <span class="spacer"></span>
+          <div class="form-field-input">
+            <input matInput formControlName="author" />
+          </div>
+        </div>
+      </div>
 
-      </div>
-      <div class="form-field">
-        <mat-label>Genre</mat-label>
-        <span class="spacer"></span>
-        <div class="form-field-input">
-          <input matInput formControlName="genre"/>
-        </div>
-      </div>
-      <div class="form-field">
-        <mat-label>Author</mat-label>
-        <span class="spacer"></span>
-        <div class="form-field-input">
-          <input matInput formControlName="author"/>
+      <div class="content-column">
+        <div class="form-field-textarea">
+          <mat-label>Content</mat-label>
+          <span class="spacer"></span>
+          <textarea matInput formControlName="content"> </textarea>
         </div>
       </div>
     </div>
-
-    <div class="content-column">
-      <div class="form-field-textarea">
-        <mat-label>Content</mat-label>
-        <span class="spacer"></span>
-        <textarea matInput formControlName="content"> </textarea>
-      </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit">
+        {{ editBookStateService.action }}
+      </button>
+      <span style="width: 1vw"></span>
+      <button mat-raised-button color="accent" (click)="ClearEditBookState()">
+        Clear
+      </button>
     </div>
-  </div>
-  <div class="actions">
-    <button mat-raised-button color="primary" type="submit">{{editBookStateService.action}}</button>
-    <span style="width: 1vw;"></span>
-    <button mat-raised-button color="accent" (click)="ClearEditBookState()">Clear</button>
-  </div>
-</form>
+  </form>
 </div>
