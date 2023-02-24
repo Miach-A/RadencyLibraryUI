@@ -55,9 +55,7 @@ export class EditBookComponent implements OnInit {
     const file: File = event.target.files[0];
 
     if (file) {
-      console.log(file);
       this.fileName = file.name;
-
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {

@@ -68,8 +68,6 @@ export class EditBookStateService {
        book.id = this.book.id;
     };
 
-    console.log(book);
-    return; // TEST
     (this.backendService.post("books/save",book) as Observable<SaveResult>)
     .pipe(take(1)) //auto unsubscribe afret emit 1 result?
     .subscribe({
