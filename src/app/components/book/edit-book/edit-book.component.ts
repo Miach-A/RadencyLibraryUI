@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { BookDto } from 'src/app/common/cqrs/books/dto/BookDto';
+import { BookEditDto } from 'src/app/common/cqrs/books/dto/BookEditDto';
 import { EditBookAction } from 'src/app/common/enums/EditBookAction';
 import { BackendService } from 'src/app/services/backend.service';
 import { EditBookStateService } from 'src/app/services/edit-book-state.service';
@@ -32,7 +33,7 @@ export class EditBookComponent implements OnInit {
 
     this._subscriptions.push(
       this.editBookStateService.GetChangeBookEmitter().subscribe({
-        next: (book: BookDto | undefined) => {
+        next: (book: BookEditDto | undefined) => {
           if (book !== undefined) {
             this.editForm.setValue(book);
           } else {

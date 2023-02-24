@@ -12,8 +12,8 @@ export class BackendService {
     @Inject(BACKEND_API_URL) private uriBase: string
   ) {}
 
-  public get(uri: string, guid?: string, query?: any): Observable<Object> {
-    //: { [key: string]: string|number|boolean }
+  public get(uri: string, query?: any): Observable<Object> //guid?: string,
+  {
     var params = new HttpParams();
 
     if (query !== undefined) {
@@ -26,11 +26,11 @@ export class BackendService {
       }
     }
 
-    if (guid != undefined && guid != '' && guid != null) {
+/*     if (guid != undefined && guid != '' && guid != null) {
       return this.httpClient.get(this.uriBase.concat(uri).concat('/' + guid), {
         params: params,
       });
-    }
+    } */
 
     return this.httpClient.get(this.uriBase.concat(uri), { params: params });
   }

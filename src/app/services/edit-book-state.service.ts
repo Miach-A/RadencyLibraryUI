@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, Subscription, take } from 'rxjs';
 import { BookDto } from '../common/cqrs/books/dto/BookDto';
+import { BookEditDto } from '../common/cqrs/books/dto/BookEditDto';
 import { EditBookAction } from '../common/enums/EditBookAction';
 import { SaveResult } from '../common/models/SaveResult';
 import { BackendService } from './backend.service';
@@ -12,12 +13,12 @@ import { BookListStateService } from './book-list-state.service';
 })
 export class EditBookStateService {
 
-  private _changeBookEmitter: EventEmitter<BookDto|undefined> =
-  new EventEmitter(); //<BookDto|undefined>
+  private _changeBookEmitter: EventEmitter<BookEditDto|undefined> =
+  new EventEmitter();
   private _saveBookSubscription:Subscription = new Subscription();
 
   public action:EditBookAction;
-  public book?:BookDto;
+  public book?:BookEditDto;
 
   constructor(
     private backendService:BackendService,
@@ -34,7 +35,13 @@ export class EditBookStateService {
 
   public EditBook(book:BookDto){
     this.action = EditBookAction.Edit;
-    this.book = book;
+    (this.backendService.get(`books/${book.id}/edit`) as Observable<BookEditDto>)
+    .pipe(take(1))
+    .subscribe({
+      next: (book:BookEditDto) => this.book = book,
+      error: (error) => console.log(error)
+    })
+
     this.EmitChangeBook();
   }
 
@@ -57,8 +64,8 @@ export class EditBookStateService {
     if(this.book !== undefined){
        book.id = this.book.id;
     }
-    console.log(book);
-    this._saveBookSubscription = (this.backendService.post('books/save',book) as Observable<SaveResult>)
+    //console.log(book);
+    (this.backendService.post('books/save',book) as Observable<SaveResult>)
     .pipe(take(1)) //auto unsubscribe afret emit 1 result?
     .subscribe({
       next: (result) => {
@@ -68,6 +75,5 @@ export class EditBookStateService {
       error: (error) => console.log(error),
     });
   }
-
 }
 
