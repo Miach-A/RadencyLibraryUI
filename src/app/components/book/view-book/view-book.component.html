@@ -1,1 +1,38 @@
-<p>view-book works!</p>
+<mat-dialog-container *ngIf="book$ | async as book" class="view-book">
+  <mat-label>Details</mat-label>
+  <button mat-icon-button class = "close"><mat-icon>close</mat-icon></button>
+  <mat-divider></mat-divider>
+  <div class = "book-card">
+    <div class = "book-info">
+      <div class = "book-icon">
+        <div class = "cover">
+
+        </div>
+        <div class = "statistics">
+          <mat-label>Rating : {{book.rating}}</mat-label>
+          <mat-label>Reviews : {{book.reviews.length}}</mat-label>
+        </div>
+      </div>
+
+      <div class = "book-content">
+        <div class = "book-content-title">
+          <mat-card-title>{{book.title}}</mat-card-title>
+        </div>
+        <div class = "book-content-subtitle">
+          <mat-card-subtitle>{{book.title}}</mat-card-subtitle>
+        </div>
+        <div class = "book-content-text">
+          <mat-dialog-content>{{book.title}}</mat-dialog-content>
+        </div>
+      </div>
+    </div>
+
+    <div class = "book-reviews">
+      <div class = "review-card"*ngFor="let item of book.reviews">
+        <mat-label>Review {{item.reviewer}}</mat-label>
+        <mat-dialog-content>{{item.message}}</mat-dialog-content>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </div>
+</mat-dialog-container>

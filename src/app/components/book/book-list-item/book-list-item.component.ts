@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BookDto } from 'src/app/common/cqrs/books/dto/BookDto';
 import { BookListStateService } from 'src/app/services/book-list-state.service';
 import { EditBookStateService } from 'src/app/services/edit-book-state.service';
+import { ViewBookComponent } from '../view-book/view-book.component';
 
 @Component({
   selector: 'app-book-list-item',
@@ -9,9 +11,12 @@ import { EditBookStateService } from 'src/app/services/edit-book-state.service';
   styleUrls: ['./book-list-item.component.scss'],
 })
 export class BookListItemComponent implements OnInit {
-  constructor(private _editBookStateServece: EditBookStateService) {}
+  constructor(
+    private _editBookStateServece: EditBookStateService,
+    private _viewBookDialog: MatDialog) {}
 
   @Input() book?: BookDto;
+
 
   ngOnInit(): void {
     if (this.book != null) {
@@ -31,5 +36,14 @@ export class BookListItemComponent implements OnInit {
       return;
     }
     this._editBookStateServece.EditBook(this.book);
+  }
+
+  ViewBook(){
+    if (!this.book){
+      return;
+    }
+    const dialogRef = this._viewBookDialog.open(ViewBookComponent,{
+      data:this.book.id
+    });
   }
 }

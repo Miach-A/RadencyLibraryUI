@@ -16,6 +16,7 @@ export class EditBookComponent implements OnInit {
   public editForm!: FormGroup;
   public fileName:string = "";
   public base64img:string = "";
+  public uploadProgress:number = 0;
   private _subscriptions: Subscription[] = [];
 
   constructor(public editBookStateService: EditBookStateService) {}

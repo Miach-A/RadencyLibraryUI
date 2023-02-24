@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { BookDetailsDto } from 'src/app/common/cqrs/books/dto/BookDetailsDto';
+import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
   selector: 'app-view-book',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewBookComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<ViewBookComponent>,
+    @Inject(MAT_DIALOG_DATA) public id: number,
+    private _backendService:BackendService) { }
+
+    public book$?:Observable<BookDetailsDto>;
 
   ngOnInit(): void {
+    this.book$ = this._backendService.get(`books/${this.id}`) as Observable<BookDetailsDto>;
   }
 
 }
