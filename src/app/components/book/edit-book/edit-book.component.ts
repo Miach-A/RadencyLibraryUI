@@ -35,7 +35,7 @@ export class EditBookComponent implements OnInit {
       this.editBookStateService.GetChangeBookEmitter().subscribe({
         next: (book: BookEditDto | undefined) => {
           if (book !== undefined) {
-            this.editForm.setValue(book);
+            this.editForm.patchValue(book);
           } else {
             this.editForm.reset();
           }
@@ -56,7 +56,6 @@ export class EditBookComponent implements OnInit {
   }
 
   public Submit() {
-    console.log("submit");
     this.editBookStateService.SaveBook(this.editForm.value);
   }
 }

@@ -38,11 +38,14 @@ export class EditBookStateService {
     (this.backendService.get(`books/${book.id}/edit`) as Observable<BookEditDto>)
     .pipe(take(1))
     .subscribe({
-      next: (book:BookEditDto) => this.book = book,
+      next: (book:BookEditDto) => {
+        this.book = book;
+        this.EmitChangeBook();
+      },
       error: (error) => console.log(error)
     })
 
-    this.EmitChangeBook();
+
   }
 
   public GetChangeBookEmitter() {
@@ -60,12 +63,12 @@ export class EditBookStateService {
     }
   }
 
-  public SaveBook(book:BookDto){
+  public SaveBook(book:BookEditDto){
     if(this.book !== undefined){
        book.id = this.book.id;
-    }
-    //console.log(book);
-    (this.backendService.post('books/save',book) as Observable<SaveResult>)
+    };
+
+    (this.backendService.post("books/save",book) as Observable<SaveResult>)
     .pipe(take(1)) //auto unsubscribe afret emit 1 result?
     .subscribe({
       next: (result) => {
