@@ -17,8 +17,7 @@
           <mat-label>Cover</mat-label>
           <span class="spacer"></span>
           <div class="form-field-input">
-            <!--         <input  matInput formControlName="cover"/>
-          <input type="file" style="flex: 0 1 20%;" type="button" value="Choose..."> -->
+
             <input
               type="file"
               class="file-input"
@@ -27,8 +26,7 @@
             />
 
             <div class="file-upload">
-              <input readonly="true" matInput  value= "{{ fileName || 'No file uploaded yet.' }}"/>
-              <input hidden formControlName="cover" value="{{base64img}}">
+              <input readonly="true" matInput  value= "{{ fileName }}"/>
               <button
                 type="button"
                 mat-flat-button

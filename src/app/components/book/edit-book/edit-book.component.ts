@@ -62,7 +62,7 @@ export class EditBookComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         if (reader.result != undefined){
-          this.base64img = reader.result.toString();
+          this.editForm.patchValue({cover:reader.result.toString()});
         }
         else
         {
