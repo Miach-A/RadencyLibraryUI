@@ -1,6 +1,7 @@
+<button mat-icon-button mat-dialog-close class = "close"><mat-icon>close</mat-icon></button>
+
 <div *ngIf="book$ | async as book" class="view-book">
   <mat-label><h1>Details</h1></mat-label>
-  <button mat-icon-button mat-dialog-close class = "close"><mat-icon>close</mat-icon></button>
   <mat-divider></mat-divider>
   <div class = "book-card">
     <div class = "book-info">
@@ -20,7 +21,7 @@
           <mat-card-title>{{book.title}}</mat-card-title>
         </div>
         <div class = "book-content-subtitle">
-          <mat-card-subtitle>{{book.title}}</mat-card-subtitle>
+          <mat-card-subtitle>{{book.author}}, {{book.genre}}</mat-card-subtitle>
         </div>
         <div class = "book-content-text">
           <mat-card-content>{{book.title}}</mat-card-content>
@@ -30,7 +31,7 @@
 
     <div class = "book-reviews">
       <div class = "review-card"*ngFor="let item of book.reviews">
-        <mat-label>Review {{item.reviewer}}</mat-label>
+        <mat-label>Reviewer {{item.reviewer}}</mat-label>
         <mat-card-content>{{item.message}}</mat-card-content>
         <mat-divider></mat-divider>
       </div>

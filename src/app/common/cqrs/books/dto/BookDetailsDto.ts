@@ -7,5 +7,6 @@ export interface BookDetailsDto {
   cover: string;
   content: string;
   rating: number;
+  genre:string;
   reviews: ReviewDto[];
 }
