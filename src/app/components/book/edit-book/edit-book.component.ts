@@ -42,6 +42,7 @@ export class EditBookComponent implements OnInit {
           } else {
             this.editForm.reset();
           }
+          this.fileName = "";
         },
       })
     );

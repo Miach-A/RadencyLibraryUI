@@ -1,120 +1,111 @@
-:host{
+:host {
   position: relative;
 }
-.view-book{
-  width: 100%;
-  height: 100%;
-}
 
-.close{
+.close {
   position: absolute;
   right: 0px;
-  top:-10px;
+  top: -10px;
 }
 
-.book-card{
-  display: flex;
-  flex-direction: column;
-  //margin-top: 1vh;
-  row-gap: 1vh;
+.view-book {
   width: 100%;
   height: 100%;
-  > mat-label{
-    text-align: center;
-    margin: 0px;
-    > * {
-      margin: 0px;
-    }
-  }
-}
 
-.book-info{
-  flex: 1 1 50%;
-  display: flex;
-  height: 100%;
-  column-gap: 1vw;
-}
-
-.book-reviews{
-  margin-top: 1vh;
-  flex: 0 1 45%;
-  overflow-y: auto;
-  width: 100%;
-  //row-gap: 1vh;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.book-icon{
-
-  flex: 0 0 30%;
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  row-gap: 1vh;
-
-  > .cover{
-    max-height: 70%;
-  }
-
-  > .cover > img{
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  > .statistics{
-    //flex: 1 1 auto;
+  > .book-card {
     display: flex;
-    flex-wrap: wrap;
-    justify-content:space-evenly;
-    > mat-label{
-      font-size: 1rem;
+    flex-direction: column;
+    row-gap: 1vh;
+    width: 100%;
+    height: 100%;
+    > mat-label {
+      text-align: center;
+      margin: 0px;
+      > * {
+        margin: 0px;
+      }
+    }
+
+    > .book-info {
+      flex: 1 1 40%;
+      display: flex;
+      height: 100%;
+      column-gap: 1vw;
+
+      > .book-icon {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1vh;
+
+        > .cover {
+          max-height: 70%;
+        }
+
+        > .cover > img {
+          max-width: 25vw;//100%; //
+          max-height: 25vh;// 100%; //
+        }
+
+        > .statistics {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          column-gap: 1vw;
+          > mat-label {
+            font-size: 1rem;
+          }
+        }
+        > .spacer {
+          flex: 1 0 30%;
+        }
+      }
+
+      .book-content {
+        height: 100%;
+        flex: 1 0 65%;
+        display: flex;
+        flex-direction: column;
+
+        > .book-content-title {
+          flex: 0 0 5%;
+        }
+
+        > .book-content-subtitle {
+          flex: 0 0 5%;
+        }
+
+        > .book-content-text {
+          flex: 1 1 auto;
+          margin-top: 1vh;
+          overflow-y: auto;
+          position: relative;
+          mat-card-content {
+            position: absolute;
+          }
+        }
+      }
+    }
+
+    > .book-reviews {
+      margin-top: 1vh;
+      flex: 1 1 50%;
+      overflow-y: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1vh;
+
+      > .review-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        row-gap: 1vh;
+        > mat-label {
+          font-size: 1rem;
+        }
+      }
     }
   }
-  > .spacer{
-    flex: 1 0 30%;
-  }
-}
-
-
-
-.book-content{
-  height: 100%;
-  flex: 1 0 65%;
-  display: flex;
-  flex-direction: column;
-}
-
-.book-content-title{
-  flex: 0 0 5%;
-}
-
-.book-content-subtitle{
-  flex: 0 0 5%;
-}
-
-.book-content-text{
-  flex: 1 1 auto;
-  margin-top: 1vh;
-  overflow-y: auto;
-  position: relative;
-  mat-card-content{
-    position: absolute;
-  }
-}
-
-.review-card{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 1vh;
-  > mat-label{
-    font-size: 1rem;
-    //margin-top: 1vh;
-  }
-
-/*   > mat-card-content{
-    margin: 1vh 0 1vh 0;
-  } */
 }
