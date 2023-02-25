@@ -47,17 +47,37 @@
 
 
 .book-icon{
+
   flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  row-gap: 1vh;
+
+  > .cover{
+    max-height: 70%;
+  }
+
   > .cover > img{
     max-width: 100%;
     max-height: 100%;
   }
+
+  > .statistics{
+    //flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    > mat-label{
+      font-size: 1rem;
+    }
+  }
+  > .spacer{
+    flex: 1 0 30%;
+  }
 }
 
-.statistics{
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 .book-content{
   height: 100%;

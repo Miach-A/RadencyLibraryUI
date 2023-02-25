@@ -22,4 +22,7 @@ export class ViewBookComponent implements OnInit {
     this.book$ = this._backendService.get(`books/${this.id}`) as Observable<BookDetailsDto>;
   }
 
+  public RoundTo2(num:number):number{
+    return Math.round(num * 100) / 100
+  }
 }

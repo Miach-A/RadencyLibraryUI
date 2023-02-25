@@ -11,10 +11,10 @@
           <img  src={{book.cover}}>
         </div>
         <div class = "statistics">
-          <mat-label>Rating : {{book.rating}}</mat-label>
-          <span style="width: 1vw;"></span>
-          <mat-label>Reviews : {{book.reviews.length}}</mat-label>
+          <mat-label><b>Rating : {{RoundTo2(book.rating)}}</b></mat-label>
+          <mat-label><b>Reviews : {{book.reviews.length}}</b></mat-label>
         </div>
+        <div class="spacer"></div>
       </div>
 
       <div class = "book-content">
