@@ -12,10 +12,7 @@ export class BackendService {
     @Inject(BACKEND_API_URL) private uriBase: string
   ) {}
 
-  public get(
-    uri: string,
-    query?: any
-  ): Observable<Object> {
+  public get(uri: string, query?: any): Observable<Object> {
     var params = new HttpParams();
 
     if (query !== undefined) {

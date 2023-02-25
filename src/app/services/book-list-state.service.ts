@@ -48,8 +48,6 @@ export class BookListStateService {
       };
     }
 
-    return this._backendService.get(uriPath, query) as Observable<
-      BookDto[]
-    >;
+    return this._backendService.get(uriPath, query) as Observable<BookDto[]>;
   }
 }
