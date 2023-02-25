@@ -1,43 +1,44 @@
-<button mat-icon-button mat-dialog-close class = "close"><mat-icon>close</mat-icon></button>
+<button mat-icon-button mat-dialog-close class="close">
+  <mat-icon>close</mat-icon>
+</button>
 
 <div *ngIf="book$ | async as book" class="view-book">
-  <div class = "book-card">
+  <div class="book-card">
     <mat-label><h1>Details</h1></mat-label>
     <mat-divider></mat-divider>
-    <div class = "book-info">
-
-      <div class = "book-icon">
-        <div class = "cover">
-          <img  src={{book.cover}}>
+    <div class="book-info">
+      <div class="book-icon">
+        <div class="cover">
+          <img src="{{ book.cover }}" />
         </div>
-        <div class = "statistics">
-          <mat-label><b>Rating : {{RoundTo2(book.rating)}}</b></mat-label>
-          <mat-label><b>Reviews : {{book.reviews.length}}</b></mat-label>
+        <div class="statistics">
+          <mat-label><b>Rating : {{ RoundTo2(book.rating) }}</b></mat-label>
+          <mat-label><b>Reviews : {{ book.reviews.length }}</b></mat-label>
         </div>
         <div class="spacer"></div>
       </div>
 
-      <div class = "book-content">
-        <div class = "book-content-title">
-          <mat-card-title>{{book.title}}</mat-card-title>
+      <div class="book-content">
+        <div class="book-content-title">
+          <mat-card-title>{{ book.title }}</mat-card-title>
         </div>
-        <div class = "book-content-subtitle">
-          <mat-card-subtitle>{{book.author}}, {{book.genre}}</mat-card-subtitle>
+        <div class="book-content-subtitle">
+          <mat-card-subtitle
+            >{{ book.author }}, {{ book.genre }}</mat-card-subtitle
+          >
         </div>
-        <div class = "book-content-text">
-          <mat-card-content>{{book.content}}</mat-card-content>
+        <div class="book-content-text">
+          <mat-card-content>{{ book.content }}</mat-card-content>
         </div>
       </div>
     </div>
 
-    <div class = "book-reviews">
-      <div class = "review-card"*ngFor="let item of book.reviews">
-        <mat-label>Reviewer {{item.reviewer}}</mat-label>
-        <mat-card-content>{{item.message}}</mat-card-content>
+    <div class="book-reviews">
+      <div class="review-card" *ngFor="let item of book.reviews">
+        <mat-label>Reviewer {{ item.reviewer }}</mat-label>
+        <mat-card-content>{{ item.message }}</mat-card-content>
         <mat-divider></mat-divider>
       </div>
-
     </div>
-
   </div>
 </div>

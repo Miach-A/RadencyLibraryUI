@@ -8,14 +8,11 @@ import { BookListStateService } from 'src/app/services/book-list-state.service';
   styleUrls: ['./books-page.component.scss'],
 })
 export class BooksPageComponent implements OnInit {
-
-  constructor(
-    private bookListStateService : BookListStateService
-  ) {}
+  constructor(private _bookListStateService: BookListStateService) {}
 
   ngOnInit(): void {}
 
   public SetBookListDataType(event: BookListDataType) {
-    this.bookListStateService.BookListDataType = event;
+    this._bookListStateService.BookListDataType = event;
   }
 }

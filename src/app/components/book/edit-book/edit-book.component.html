@@ -1,55 +1,46 @@
 <form [formGroup]="editForm" (ngSubmit)="Submit()">
   <div class="edit-book">
     <div class="title">
-      <h3>{{ editBookStateService.action }} Book</h3>
+      <h3>{{ _editBookStateService.action }} Book</h3>
     </div>
     <mat-divider></mat-divider>
     <div class="content">
       <div class="content-column">
         <div class="form-field">
           <mat-label>Title</mat-label>
-          <div class="form-field-input">
-            <input matInput formControlName="title" />
-          </div>
+          <input matInput formControlName="title" />
         </div>
         <div class="form-field">
           <mat-label>Cover</mat-label>
-          <div class="form-field-input">
-            <input
-              type="file"
-              class="file-input"
-              (change)="onFileSelected($event)"
-              #fileUpload
-            />
 
-            <div class="file-upload">
-              <input readonly="true" matInput value="{{ fileName }}" />
+          <input
+            type="file"
+            class="file-input"
+            (change)="OnFileSelected($event)"
+            #fileUpload
+          />
 
-              <button
-                type="button"
-                mat-flat-button
-                color="primary"
-                class="upload-btn"
-                (click)="fileUpload.click()"
-              >
-                Choose...
-              </button>
-            </div>
-          </div>
+          <input readonly="true" matInput value="{{ fileName }}" />
+
+          <button
+            type="button"
+            mat-flat-button
+            color="primary"
+            class="upload-btn"
+            (click)="fileUpload.click()"
+          >
+            Choose...
+          </button>
         </div>
 
         <div class="form-field">
           <mat-label>Genre</mat-label>
-          <div class="form-field-input">
-            <input matInput formControlName="genre" />
-          </div>
+          <input matInput formControlName="genre" />
         </div>
 
         <div class="form-field">
           <mat-label>Author</mat-label>
-          <div class="form-field-input">
-            <input matInput formControlName="author" />
-          </div>
+          <input matInput formControlName="author" />
         </div>
       </div>
 
@@ -62,7 +53,7 @@
     </div>
     <div class="actions">
       <button mat-raised-button color="primary" type="submit">
-        {{ editBookStateService.action }}
+        {{ _editBookStateService.action }}
       </button>
       <span style="width: 1vw"></span>
       <button mat-raised-button color="accent" (click)="ClearEditBookState()">

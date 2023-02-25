@@ -1,7 +1,8 @@
 .edit-book {
   width: 100%;
   height: 100%;
-  padding: 1vh 1vw 1vh 1vw;
+  min-width: 400px;
+  padding: 1vh 2vw 1vh 2vw;
   border-radius: 0.5vmax;
   border-style: solid;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -14,6 +15,7 @@
     flex: 0 0 10%;
     display: flex;
     align-items: center;
+    margin: 0 0 1vh 0;
 
     > h3 {
       margin: 0;
@@ -22,17 +24,17 @@
   }
 
   > .content {
-    box-sizing: border-box;
     display: flex;
     flex: 1 1 80%;
-    padding: 3vh 1vw 1vh 1vw;
-    flex-wrap:wrap;
+    margin: 2vh 0 0 0;
+    column-gap: 1vw;
+    flex-wrap: wrap;
 
     > .content-column {
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      margin: 0 1vw 0 1vw;
+      row-gap: 0.5vh;
 
       > .form-field {
         display: flex;
@@ -42,46 +44,49 @@
         width: 100%;
         align-items: center;
         column-gap: 1vw;
+        position: relative;
 
-        > mat-label{
+        > mat-label {
           flex: 0 0 auto;
         }
 
-        > .form-field-input{
+        input {
+          min-width: 200px;
+          border: 1px;
+          border-style: solid;
+          border-radius: 5px;
+        }
+
+        > * {
           flex: 1 1 auto;
-          display: flex;
-          justify-content: flex-end;
+          padding: 5px;
+        }
 
-          > * {
-            flex: 1 1 auto;
-            padding: 5px;
-          }
+        > button {
+          width: 100px;
+          height: 28px;
+          flex: 0 1 auto;
+          line-height: 0px;
+          position: absolute;
+          right: 0px;
+        }
 
-/*           > *:focus{
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            outline: none;
-          } */
-
-          > input {
-            border: 1px;
-            border-style: solid;
-            border-radius: 5px;
-          }
+        > .file-input {
+          display: none;
         }
       }
 
-      > .form-field-textarea{
+      > .form-field-textarea {
         display: flex;
         justify-content: flex-end;
         font-size: 18px;
-        margin: 1vh;
         height: 100%;
         width: 100%;
         column-gap: 1vw;
-        > mat-label{
+        > mat-label {
           flex: 0 0 auto;
         }
-        > textarea{
+        > textarea {
           resize: none;
           width: 80%;
           border-radius: 5px;
@@ -89,53 +94,19 @@
           font-family: Roboto, "Helvetica Neue", sans-serif;
         }
       }
-
     }
   }
 
-  > .actions{
+  > .actions {
     box-sizing: border-box;
     display: flex;
     flex: 0 0 10%;
     padding: 0 1vh 0 1vh;
     justify-content: center;
-    button{
+    button {
       height: 30px;
       line-height: 20px;
-      width: max(8vw, 90px) ;
+      width: max(8vw, 90px);
     }
-  }
-
-}
-
-
-
-/* .form-field-input > *{
-  flex: 1 1 auto;
-  padding: 5px;
-}
- */
-/* *:focus{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  outline: none;
-} */
-
-
-.file-input {
-  display: none;
-}
-
-.file-upload{
-  display: flex;
-  justify-content: flex-end;
-  align-items:center;
-  input{
-    padding: 5px;
-    flex: 1 1 auto;
-  }
-  button{
-    height: 27px;
-    flex: 0 1 auto;
-    line-height: 20px;
   }
 }

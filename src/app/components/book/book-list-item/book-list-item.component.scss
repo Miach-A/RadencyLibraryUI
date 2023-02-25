@@ -1,4 +1,4 @@
-.book-card{
+.book-card {
   border-style: solid;
   border-radius: 0.5vmax;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -11,44 +11,43 @@
   flex-wrap: wrap;
   position: relative;
   column-gap: 1vh;
-}
 
-.book-icon{
-  flex: 0 0 30%;
-  max-width: 100%;
-  max-height: 100%;
-  > img {
+  .book-icon {
+    flex: 0 0 30%;
     max-width: 100%;
     max-height: 100%;
+    > img {
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
-}
 
+  > .book-info {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
 
-.book-info{
-  flex: 0 0 50%;
-  display: flex;
-  flex-direction: column;
-}
+    > .book-info-tittle {
+      flex: 0 0 70%;
+    }
 
-.book-info-tittle{
-  flex: 0 0 70%;
-}
+    > .book-info-footer {
+      flex: 0 0 70%;
+      display: flex;
+    }
+  }
 
-.book-info-footer{
-  flex: 0 0 70%;
-  display: flex;
-}
+  .view-buttn {
+    position: absolute;
+    top: -5px;
+    right: 50px;
+    margin: 2px;
+  }
 
-.view-buttn{
-  position: absolute;
-  top: -5px;
-  right: 50px;
-  margin: 2px;
-}
-
-.edit-buttn{
-  position: absolute;
-  top: -5px;;
-  right: 5px;
-  margin: 2px;
+  .edit-buttn {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    margin: 2px;
+  }
 }

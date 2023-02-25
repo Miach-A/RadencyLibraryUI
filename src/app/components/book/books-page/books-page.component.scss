@@ -1,5 +1,4 @@
 .book-page {
-
   margin: 0 2vh 0 2vh;
   display: flex;
   height: 100%;
@@ -24,6 +23,7 @@
 
   > .book-list-tab {
     flex: 0 0 auto;
+    min-width: 400px;
   }
 
   > .book-list {
