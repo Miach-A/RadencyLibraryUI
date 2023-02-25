@@ -1,4 +1,4 @@
-.form-wrapper {
+.edit-book {
   width: 100%;
   height: 100%;
   padding: 1vh 1vw 1vh 1vw;
@@ -9,102 +9,117 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-}
 
-.title {
-  flex: 0 0 10%;
-  display: flex;
-  align-items: center;
-}
+  > .title {
+    flex: 0 0 10%;
+    display: flex;
+    align-items: center;
 
-.content {
-  box-sizing: border-box;
-  display: flex;
-  flex: 1 1 80%;
-  padding: 3vh 1vw 1vh 1vw;
-  flex-wrap:wrap;
-}
-
-.actions{
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 0 10%;
-  padding: 0 1vh 0 1vh;
-  justify-content: center;
-  button{
-    height: 30px;
-    line-height: 20px;
-    width: max(8vw, 90px) ;
+    > h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
   }
+
+  > .content {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 80%;
+    padding: 3vh 1vw 1vh 1vw;
+    flex-wrap:wrap;
+
+    > .content-column {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      margin: 0 1vw 0 1vw;
+
+      > .form-field {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 18px;
+        margin: 1vh;
+        width: 100%;
+        align-items: center;
+        column-gap: 1vw;
+
+        > mat-label{
+          flex: 0 0 auto;
+        }
+
+        > .form-field-input{
+          flex: 1 1 auto;
+          display: flex;
+          justify-content: flex-end;
+
+          > * {
+            flex: 1 1 auto;
+            padding: 5px;
+          }
+
+/*           > *:focus{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            outline: none;
+          } */
+
+          > input {
+            border: 1px;
+            border-style: solid;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      > .form-field-textarea{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 18px;
+        margin: 1vh;
+        height: 100%;
+        width: 100%;
+        column-gap: 1vw;
+        > mat-label{
+          flex: 0 0 auto;
+        }
+        > textarea{
+          resize: none;
+          width: 80%;
+          border-radius: 5px;
+          padding: 5px;
+          font-family: Roboto, "Helvetica Neue", sans-serif;
+        }
+      }
+
+    }
+  }
+
+  > .actions{
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 10%;
+    padding: 0 1vh 0 1vh;
+    justify-content: center;
+    button{
+      height: 30px;
+      line-height: 20px;
+      width: max(8vw, 90px) ;
+    }
+  }
+
 }
 
-.content-column {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  margin: 0 1vw 0 1vw;
-}
 
-.form-field-input{
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: flex-end;
-}
-.form-field-input > *{
+
+/* .form-field-input > *{
   flex: 1 1 auto;
   padding: 5px;
 }
-
-*:focus{
+ */
+/* *:focus{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   outline: none;
-}
+} */
 
-.form-field-textarea{
-  display: flex;
-  justify-content: flex-end;
-  font-size: 18px;
-  margin: 1vh;
-  height: 100%;
-  width: 100%;
-  mat-label{
-    flex: 0 0 auto;
-  }
-  textarea{
-    resize: none;
-    width: 80%;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-  }
-}
-
-.form-field {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 18px;
-  margin: 1vh;
-  width: 100%;
-  align-items: center;
-  mat-label{
-    flex: 0 0 auto;
-  }
-  input {
-    border: 1px;
-    border-style: solid;
-    border-radius: 5px;
-  }
-
-}
-
-.spacer {
-  width: 5vw;
-}
-
-h3 {
-  margin: 0;
-  font-size: 1.3rem;
-}
 
 .file-input {
   display: none;

@@ -1,5 +1,5 @@
 <form [formGroup]="editForm" (ngSubmit)="Submit()">
-  <div class="form-wrapper">
+  <div class="edit-book">
     <div class="title">
       <h3>{{ editBookStateService.action }} Book</h3>
     </div>
@@ -8,14 +8,12 @@
       <div class="content-column">
         <div class="form-field">
           <mat-label>Title</mat-label>
-          <span class="spacer"></span>
           <div class="form-field-input">
             <input matInput formControlName="title" />
           </div>
         </div>
         <div class="form-field">
           <mat-label>Cover</mat-label>
-          <span class="spacer"></span>
           <div class="form-field-input">
             <input
               type="file"
@@ -42,14 +40,13 @@
 
         <div class="form-field">
           <mat-label>Genre</mat-label>
-          <span class="spacer"></span>
           <div class="form-field-input">
             <input matInput formControlName="genre" />
           </div>
         </div>
+
         <div class="form-field">
           <mat-label>Author</mat-label>
-          <span class="spacer"></span>
           <div class="form-field-input">
             <input matInput formControlName="author" />
           </div>
@@ -59,7 +56,6 @@
       <div class="content-column">
         <div class="form-field-textarea">
           <mat-label>Content</mat-label>
-          <span class="spacer"></span>
           <textarea matInput formControlName="content"> </textarea>
         </div>
       </div>
