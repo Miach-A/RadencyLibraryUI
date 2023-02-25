@@ -1,10 +1,9 @@
 <button mat-icon-button mat-dialog-close class = "close"><mat-icon>close</mat-icon></button>
 
 <div *ngIf="book$ | async as book" class="view-book">
-  <mat-label><h1>Details</h1></mat-label>
-  <mat-divider></mat-divider>
   <div class = "book-card">
-
+    <mat-label><h1>Details</h1></mat-label>
+    <mat-divider></mat-divider>
     <div class = "book-info">
 
       <div class = "book-icon">
@@ -26,7 +25,7 @@
           <mat-card-subtitle>{{book.author}}, {{book.genre}}</mat-card-subtitle>
         </div>
         <div class = "book-content-text">
-          <mat-card-content>{{book.title}}</mat-card-content>
+          <mat-card-content>{{book.content}}</mat-card-content>
         </div>
       </div>
     </div>

@@ -4,10 +4,6 @@
 .view-book{
   width: 100%;
   height: 100%;
-  > mat-label{
-    text-align: center;
-    margin: 0px;
-  }
 }
 
 .close{
@@ -19,9 +15,17 @@
 .book-card{
   display: flex;
   flex-direction: column;
-  margin-top: 1vh;
+  //margin-top: 1vh;
+  row-gap: 1vh;
   width: 100%;
-  height: 90%;
+  height: 100%;
+  > mat-label{
+    text-align: center;
+    margin: 0px;
+    > * {
+      margin: 0px;
+    }
+  }
 }
 
 .book-info{
