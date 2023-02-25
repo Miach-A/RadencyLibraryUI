@@ -3,5 +3,6 @@ export interface BookDto {
   title: string;
   author: string;
   rating: number;
+  cover:string;
   reviewsNumber: number;
 }
