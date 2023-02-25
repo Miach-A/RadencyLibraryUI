@@ -10,6 +10,7 @@
         </div>
         <div class = "statistics">
           <mat-label>Rating : {{book.rating}}</mat-label>
+          <span style="width: 1vw;"></span>
           <mat-label>Reviews : {{book.reviews.length}}</mat-label>
         </div>
       </div>
@@ -22,7 +23,7 @@
           <mat-card-subtitle>{{book.title}}</mat-card-subtitle>
         </div>
         <div class = "book-content-text">
-          <mat-dialog-content>{{book.title}}</mat-dialog-content>
+          <mat-card-content>{{book.title}}</mat-card-content>
         </div>
       </div>
     </div>
@@ -30,7 +31,7 @@
     <div class = "book-reviews">
       <div class = "review-card"*ngFor="let item of book.reviews">
         <mat-label>Review {{item.reviewer}}</mat-label>
-        <mat-dialog-content>{{item.message}}</mat-dialog-content>
+        <mat-card-content>{{item.message}}</mat-card-content>
         <mat-divider></mat-divider>
       </div>
     </div>

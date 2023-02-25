@@ -43,7 +43,9 @@ export class BookListItemComponent implements OnInit {
       return;
     }
     const dialogRef = this._viewBookDialog.open(ViewBookComponent,{
-      data:this.book.id
+      data:this.book.id,
+      width:'80vw',
+      height:'80vh'
     });
   }
 }
