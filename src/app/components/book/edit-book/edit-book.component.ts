@@ -33,7 +33,9 @@ export class EditBookComponent implements OnInit {
           if (book !== undefined) {
             this.editForm.patchValue(book);
           } else {
-            this.editForm.reset();
+            this.editForm.reset({
+              cover:""
+            });
           }
           this.fileName = '';
         },
@@ -43,7 +45,9 @@ export class EditBookComponent implements OnInit {
 
   public ClearEditBookState() {
     this._editBookStateService.ClearState();
-    this.editForm.reset();
+    this.editForm.reset({
+      cover:""
+    });
   }
 
   public OnFileSelected(event: any) {
@@ -68,7 +72,7 @@ export class EditBookComponent implements OnInit {
       this.editForm.markAllAsTouched();
       return;
     }
-    console.log(this.editForm.value);
+
     this._editBookStateService.SaveBook(this.editForm.value);
   }
 
