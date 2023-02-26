@@ -90,6 +90,7 @@
           flex: 0 0 auto;
         }
         > textarea {
+          white-space: pre-line;
           resize: none;
           width: 80%;
           border-radius: 5px;

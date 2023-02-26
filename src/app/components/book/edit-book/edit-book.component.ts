@@ -20,12 +20,8 @@ export class EditBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.editForm = new FormGroup({
-      title: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(128),
-      ]),
-      cover: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]),
+      cover: new FormControl(''),
       genre: new FormControl('', [Validators.required]),
       author: new FormControl('', [Validators.required]),
       content: new FormControl('', [Validators.required]),
@@ -45,16 +41,6 @@ export class EditBookComponent implements OnInit {
     );
   }
 
-  public GetErrors(name:string):string{
-    var result:string = "";
-    if (this.editForm.controls[name].hasError('required') && !this.editForm.controls[name].untouched){
-      result.concat("required");
-    }
-    console.log(this.editForm.controls[name].hasError('required'));
-    console.log(!this.editForm.controls[name].untouched);
-    return result;
-  }
-
   public ClearEditBookState() {
     this._editBookStateService.ClearState();
     this.editForm.reset();
@@ -69,7 +55,7 @@ export class EditBookComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         if (reader.result != undefined) {
-          this.editForm.patchValue({ cover: reader.result.toString() });
+          this.editForm.patchValue({cover: reader.result.toString() });
         } else {
           this.base64img = '';
         }
@@ -82,6 +68,7 @@ export class EditBookComponent implements OnInit {
       this.editForm.markAllAsTouched();
       return;
     }
+    console.log(this.editForm.value);
     this._editBookStateService.SaveBook(this.editForm.value);
   }
 
