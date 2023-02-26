@@ -34,13 +34,17 @@
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      row-gap: 0.5vh;
+      //row-gap: 0.5vh;
+
+      > mat-error{
+        text-align: center;
+      }
 
       > .form-field {
         display: flex;
         justify-content: flex-end;
         font-size: 18px;
-        margin: 1vh;
+        margin: 1vh 1vw 0 0;
         width: 100%;
         align-items: center;
         column-gap: 1vw;
@@ -55,6 +59,10 @@
           border: 1px;
           border-style: solid;
           border-radius: 5px;
+        }
+
+        input::placeholder{
+          color: red;
         }
 
         > * {

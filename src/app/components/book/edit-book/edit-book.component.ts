@@ -45,6 +45,16 @@ export class EditBookComponent implements OnInit {
     );
   }
 
+  public GetErrors(name:string):string{
+    var result:string = "";
+    if (this.editForm.controls[name].hasError('required') && !this.editForm.controls[name].untouched){
+      result.concat("required");
+    }
+    console.log(this.editForm.controls[name].hasError('required'));
+    console.log(!this.editForm.controls[name].untouched);
+    return result;
+  }
+
   public ClearEditBookState() {
     this._editBookStateService.ClearState();
     this.editForm.reset();
@@ -68,6 +78,9 @@ export class EditBookComponent implements OnInit {
   }
 
   public Submit() {
+    if (this.editForm.invalid) {
+      return;
+    }
     this._editBookStateService.SaveBook(this.editForm.value);
   }
 
