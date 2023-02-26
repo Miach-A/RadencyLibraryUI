@@ -14,7 +14,7 @@ export class EditBookComponent implements OnInit {
   public fileName: string = '';
   public base64img: string = '';
   public uploadProgress: number = 0;
-  private _subscriptions: Subscription[] = [];
+  private _subscription:Subscription = new Subscription();
 
   constructor(public _editBookStateService: EditBookStateService) {}
 
@@ -31,7 +31,7 @@ export class EditBookComponent implements OnInit {
       content: new FormControl('', [Validators.required]),
     });
 
-    this._subscriptions.push(
+    this._subscription.add(
       this._editBookStateService.GetChangeBookEmitter().subscribe({
         next: (book: BookEditDto | undefined) => {
           if (book !== undefined) {
@@ -72,8 +72,6 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this._subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
-    });
+    this._subscription.unsubscribe();
   }
 }

@@ -23,11 +23,11 @@ export class BookListItemComponent implements OnInit {
     }
   }
 
-  ShortTitle(): string {
-    if (this.book != null) {
-      return this.book.title.substring(0, 42);
+  CutString(str:string | undefined , count:number): string {
+    if (str == undefined){
+      return "";
     }
-    return '';
+      return str.substring(0, count);
   }
 
   EditBook() {

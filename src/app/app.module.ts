@@ -10,7 +10,6 @@ import { BACKEND_API_URL } from './app-injection-tokens';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { BookModule } from './components/book/book.module';
-import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +19,6 @@ import { SharedModule } from './components/shared/shared.module';
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    SharedModule,
     BookModule,
     HttpClientModule
   ],

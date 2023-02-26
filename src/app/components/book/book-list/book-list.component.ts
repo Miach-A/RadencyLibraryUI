@@ -17,7 +17,7 @@ import { BookListStateService } from 'src/app/services/book-list-state.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookListComponent implements OnInit, OnDestroy {
-  private _subscriptions: Subscription[] = [];
+  private _subscription: Subscription = new Subscription();
 
   constructor(
     private _bookListStateService: BookListStateService,
@@ -28,7 +28,7 @@ export class BookListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.books$ = this._bookListStateService.GetBooks();
-    this._subscriptions.push(
+    this._subscription.add(
       this._bookListStateService.GetRefreshBookListEmitter().subscribe({
         next: () => {
           this.books$ = this._bookListStateService.GetBooks();
@@ -39,8 +39,6 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
-    });
+    this._subscription.unsubscribe();
   }
 }

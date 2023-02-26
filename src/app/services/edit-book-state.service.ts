@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subscription, take } from 'rxjs';
+import { Observable, Subscription, switchMap, take } from 'rxjs';
 import { BookDto } from '../common/cqrs/books/dto/BookDto';
 import { BookEditDto } from '../common/cqrs/books/dto/BookEditDto';
 import { EditBookAction } from '../common/enums/EditBookAction';
@@ -13,7 +13,9 @@ import { BookListStateService } from './book-list-state.service';
 export class EditBookStateService {
   private _changeBookEmitter: EventEmitter<BookEditDto | undefined> =
     new EventEmitter();
-  private _subscriptions: Subscription[] = [];
+
+  private _bookGetSubscription:Subscription = new Subscription();
+  private _bookSaveSubscription:Subscription = new Subscription();
 
   public action: EditBookAction;
   public book?: BookEditDto;
@@ -33,13 +35,15 @@ export class EditBookStateService {
 
   public EditBook(book: BookDto) {
     this.action = EditBookAction.Edit;
-    this._subscriptions.push(
+
+    //this._bookGetSubscription.unsubscribe();
+    this._bookGetSubscription.add(
       (
         this._backendService.get(
           `books/${book.id}/edit`
         ) as Observable<BookEditDto>
       )
-        .pipe(take(1)) //auto unsubscribe afret emit 1 result?
+        .pipe(take(1))
         .subscribe({
           next: (book: BookEditDto) => {
             this.book = book;
@@ -71,11 +75,12 @@ export class EditBookStateService {
       book.id = this.book.id;
     }
 
-    this._subscriptions.push(
+    //this._bookSaveSubscription.unsubscribe();
+    this._bookSaveSubscription.add(
       (this._backendService.post('books/save', book) as Observable<SaveResult>)
-        .pipe(take(1)) //auto unsubscribe afret emit 1 result?
+        .pipe(take(1))
         .subscribe({
-          next: (result) => {
+          next: () => {
             this.ClearState();
             this._bookListStateService.EmitRefreshBookListEvent();
           },
@@ -89,8 +94,7 @@ export class EditBookStateService {
   }
 
   ngOnDestroy(): void {
-    this._subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
-    });
+    this._bookGetSubscription.unsubscribe();
+    this._bookSaveSubscription.unsubscribe();
   }
 }
