@@ -1,0 +1,77 @@
+<form [formGroup]="editForm" (ngSubmit)="Submit()">
+  <div class="edit-book">
+    <div class="title">
+      <h3>{{ _editBookStateService.action }} Book</h3>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="content">
+      <div class="content-column">
+        <div class="form-field">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title"/>
+        </div>
+        <mat-error *ngIf="this.editForm.controls['title'].hasError('required') && this.editForm.controls['title'].touched">
+          title is required
+        </mat-error>
+
+        <div class="form-field">
+          <mat-label>Cover</mat-label>
+
+          <input
+            type="file"
+            class="file-input"
+            (change)="OnFileSelected($event)"
+            #fileUpload
+          />
+
+          <input readonly="true" matInput value="{{ fileName }}" />
+
+          <button
+            type="button"
+            mat-flat-button
+            color="primary"
+            class="upload-btn"
+            (click)="fileUpload.click()"
+          >
+            Choose...
+          </button>
+        </div>
+
+        <div class="form-field">
+          <mat-label>Genre</mat-label>
+          <input matInput formControlName="genre" />
+        </div>
+        <mat-error *ngIf="this.editForm.controls['genre'].hasError('required') && this.editForm.controls['genre'].touched">
+          genre is required
+        </mat-error>
+
+        <div class="form-field">
+          <mat-label>Author</mat-label>
+          <input matInput formControlName="author" />
+        </div>
+        <mat-error *ngIf="this.editForm.controls['author'].hasError('required') && this.editForm.controls['author'].touched">
+          author is required
+        </mat-error>
+      </div>
+
+      <div class="content-column">
+        <div class="form-field-textarea">
+          <mat-label>Content</mat-label>
+          <textarea matInput formControlName="content"> </textarea>
+        </div>
+        <mat-error *ngIf="this.editForm.controls['content'].hasError('required') && this.editForm.controls['content'].touched">
+          content is required
+        </mat-error>
+      </div>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit">
+        {{ _editBookStateService.action }}
+      </button>
+      <span style="width: 1vw"></span>
+      <button mat-raised-button color="accent" type="button" (click)="ClearEditBookState()">
+        Clear
+      </button>
+    </div>
+  </div>
+</form>

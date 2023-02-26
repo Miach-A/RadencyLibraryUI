@@ -1,0 +1,32 @@
+.book-page {
+  margin: 0 2vh 0 2vh;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  row-gap: 1vh;
+
+  > .title {
+    flex: 0 1 5%;
+    display: flex;
+    align-items: center;
+
+    > h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+  }
+
+  > .edit-book {
+    flex: 0 1 30%;
+    margin-right: 2vh;
+  }
+
+  > .book-list-tab {
+    flex: 0 0 auto;
+    min-width: 400px;
+  }
+
+  > .book-list {
+    flex: 1 1 auto;
+  }
+}

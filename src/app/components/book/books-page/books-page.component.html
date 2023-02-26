@@ -1,0 +1,22 @@
+<div class="book-page">
+  <mat-label class="title">
+    <h1>Library</h1>
+  </mat-label>
+  <div class="edit-book">
+    <app-edit-book></app-edit-book>
+  </div>
+
+  <div class="book-list-tab">
+    <mat-tab-group
+      [color]="'primary'"
+      (selectedIndexChange)="SetBookListDataType($event)"
+    >
+      <mat-tab label="All"> </mat-tab>
+      <mat-tab label="Recommended"> </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="book-list">
+    <app-book-list></app-book-list>
+  </div>
+</div>
