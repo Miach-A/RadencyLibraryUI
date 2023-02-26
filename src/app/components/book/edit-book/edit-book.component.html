@@ -10,7 +10,7 @@
           <mat-label>Title</mat-label>
           <input matInput formControlName="title"/>
         </div>
-        <mat-error *ngIf="this.editForm.controls['title'].hasError('required') && !this.editForm.controls['title'].untouched">
+        <mat-error *ngIf="this.editForm.controls['title'].hasError('required') && this.editForm.controls['title'].touched">
           title is required
         </mat-error>
 
@@ -41,7 +41,7 @@
           <mat-label>Genre</mat-label>
           <input matInput formControlName="genre" />
         </div>
-        <mat-error *ngIf="this.editForm.controls['genre'].hasError('required') && !this.editForm.controls['genre'].untouched">
+        <mat-error *ngIf="this.editForm.controls['genre'].hasError('required') && this.editForm.controls['genre'].touched">
           genre is required
         </mat-error>
 
@@ -49,17 +49,17 @@
           <mat-label>Author</mat-label>
           <input matInput formControlName="author" />
         </div>
+        <mat-error *ngIf="this.editForm.controls['author'].hasError('required') && this.editForm.controls['author'].touched">
+          author is required
+        </mat-error>
       </div>
-      <mat-error *ngIf="this.editForm.controls['author'].hasError('required') && !this.editForm.controls['author'].untouched">
-        author is required
-      </mat-error>
 
       <div class="content-column">
         <div class="form-field-textarea">
           <mat-label>Content</mat-label>
           <textarea matInput formControlName="content"> </textarea>
         </div>
-        <mat-error *ngIf="this.editForm.controls['content'].hasError('required') && !this.editForm.controls['content'].untouched">
+        <mat-error *ngIf="this.editForm.controls['content'].hasError('required') && this.editForm.controls['content'].touched">
           content is required
         </mat-error>
       </div>

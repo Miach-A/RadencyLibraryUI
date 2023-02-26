@@ -79,6 +79,7 @@ export class EditBookComponent implements OnInit {
 
   public Submit() {
     if (this.editForm.invalid) {
+      this.editForm.markAllAsTouched();
       return;
     }
     this._editBookStateService.SaveBook(this.editForm.value);
